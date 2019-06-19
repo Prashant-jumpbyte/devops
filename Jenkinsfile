@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                sh "sudo docker rm -f EventManagerAPI"
+                sh "sudo docker rm -f EventManagerAPI 2>/dev/null"
                 sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
             }
         }
