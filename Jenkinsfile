@@ -23,13 +23,14 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                try {
-                    sh "sudo docker rm -f EventManagerAPI"
+                script {
+                  try {
+                      sh 'sudo docker rm -f EventManagerAPI'
+                  } catch (Exception e) {
+                      sh 'Handle the exception!'
+                  }
+                    sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
                 }
-                catch (exc) {
-                    echo 'Something failed, I should sound the klaxons!'
-                }
-                sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
             }
         }
     }
