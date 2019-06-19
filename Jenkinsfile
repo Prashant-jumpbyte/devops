@@ -18,13 +18,13 @@ pipeline {
         }
         stage('Build Image Docker'){
             steps {
-                sh "docker build -t event-manager ."
+                sh "sudo docker build -t event-manager ."
             }
         }
         stage('Deploy'){
             steps {
-                sh "docker rm -f EventManagerAPI"
-                sh "docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
+                sh "sudo docker rm -f EventManagerAPI"
+                sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
             }
         }
     }
