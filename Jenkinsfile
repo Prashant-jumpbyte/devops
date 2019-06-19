@@ -26,6 +26,9 @@ pipeline {
                 try {
                     sh "sudo docker rm -f EventManagerAPI"
                 }
+                catch (exc) {
+                    echo 'Something failed, I should sound the klaxons!'
+                }
                 sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
             }
         }
