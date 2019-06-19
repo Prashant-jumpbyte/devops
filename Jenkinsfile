@@ -27,9 +27,9 @@ pipeline {
                   try {
                       sh 'sudo docker rm -f EventManagerAPI'
                   } catch (Exception e) {
-                      sh 'Handle the exception!'
+                      echo 'Handle the exception!'
                   }
-                    sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
+                  sh "sudo docker run --name EventManagerAPI -p 50001:9090 -d event-manager"
                 }
             }
         }
